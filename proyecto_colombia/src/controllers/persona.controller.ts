@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -7,24 +8,25 @@ import {
   Where,
 } from '@loopback/repository';
 import {
-  post,
-  param,
+  del,
   get,
   getModelSchemaRef,
+  param,
   patch,
+  post,
   put,
-  del,
   requestBody,
   response,
 } from '@loopback/rest';
 import {Persona} from '../models';
 import {PersonaRepository} from '../repositories';
 
+@authenticate("admin")
 export class PersonaController {
   constructor(
     @repository(PersonaRepository)
-    public personaRepository : PersonaRepository,
-  ) {}
+    public personaRepository: PersonaRepository,
+  ) { }
 
   @post('/personas')
   @response(200, {

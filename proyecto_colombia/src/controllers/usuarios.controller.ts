@@ -24,6 +24,11 @@ import {service} from '@loopback/core';
 import axios from 'axios';
 import {AuthService} from '../services';
 
+import {authenticate} from '@loopback/authentication';
+import {HttpErrors} from '@loopback/rest';
+import {Credenciales} from '../models';
+
+@authenticate("admin")  // Con esta sentencia colocamos permisos de autenticación a todos los servicios web del controlador usuarios
 export class UsuariosController {
   constructor(
     @repository(UsuariosRepository)
@@ -32,7 +37,7 @@ export class UsuariosController {
     public servicioAuth: AuthService
 
   ) { }
-
+  @authenticate.skip() //Instrucción que habilita que este método del servicio web del controlador usuarios no deba tener permisos de autenticación
   @post('/usuarios')
   @response(200, {
     description: 'Usuarios model instance',
@@ -187,4 +192,36 @@ export class UsuariosController {
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.usuariosRepository.deleteById(id);
   }
+
+  //Servicio de login
+  @authenticate.skip()
+  @post('/login', {
+    responses: {
+      '200': {
+        description: 'Identificación de usuarios'
+      }
+    }
+  })
+  async login(
+    @requestBody() credenciales: Credenciales
+  ) {
+    let p = await this.servicioAuth.IdentificarPersona(credenciales.usuario, credenciales.password);
+    if (p) {
+      let token = this.servicioAuth.GenerarTokenJWT(p);
+
+      return {
+        status: "success",
+        data: {
+          nombre: p.nombre,
+          apellidos: p.apellidos,
+          correo: p.correo,
+          id: p.id
+        },
+        token: token
+      }
+    } else {
+      throw new HttpErrors[401]("Datos invalidos")
+    }
+  }
+
 }

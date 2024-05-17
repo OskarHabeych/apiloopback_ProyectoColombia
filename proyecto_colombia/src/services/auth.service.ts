@@ -48,7 +48,7 @@ export class AuthService {
 
   validarTokenJWT(token: string) {
     try {
-      let datos = jwt.verify(token, config.claveJWT);
+      let datos = jwt.verify(token, config.claveJWT); // paso donde verifica el "token" generado por el usuario inscrito con respecto a la clave general JWT "config.claveJWT" del proyecto
       return datos;
     } catch (error) {
       return false;
