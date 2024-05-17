@@ -9,10 +9,13 @@ export class Aportes extends Entity {
   })
   id?: string;
 
-  /*@property({
+  @property({
     type: 'string',
   })
-  comantario?: string;*/
+  comentario?: string;
+
+  /*@belongsTo(() => Persona, {name: 'comentarioFk'})
+  comantario: string;*/
 
 
   constructor(data?: Partial<Aportes>) {

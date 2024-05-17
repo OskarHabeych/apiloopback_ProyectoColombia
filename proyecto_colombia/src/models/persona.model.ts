@@ -9,11 +9,11 @@ export class Persona extends Entity {
   })
   id?: string;
 
-  /*@property({
+  @property({
     type: 'string',
     required: true,
   })
-  alias: string;*/
+  alias: string;
 
   @property({
     type: 'string',
