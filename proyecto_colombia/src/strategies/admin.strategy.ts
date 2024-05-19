@@ -6,7 +6,7 @@ import parseBearerToken from 'parse-bearer-token';
 import {AuthService} from '../services';
 
 export class AdministradorStrategy implements AuthenticationStrategy {
-  name: string = 'admin';
+  name: string = 'admin'; // El rol administrador maneja todas las funciones posibles que se puedan hacer en la pag web
 
   constructor(
     @service(AuthService)

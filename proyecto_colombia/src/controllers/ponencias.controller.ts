@@ -21,7 +21,7 @@ import {
 import {Ponencias} from '../models';
 import {PonenciasRepository} from '../repositories';
 
-@authenticate("admin")
+@authenticate("admin")     
 export class PonenciasController {
   constructor(
     @repository(PonenciasRepository)

@@ -37,6 +37,7 @@ export class UsuariosController {
     public servicioAuth: AuthService
 
   ) { }
+  
   @authenticate.skip() //Instrucción que habilita que este método del servicio web del controlador usuarios no deba tener permisos de autenticación
   @post('/usuarios')
   @response(200, {
