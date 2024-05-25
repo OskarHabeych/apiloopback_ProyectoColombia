@@ -1,0 +1,42 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Ponencias = void 0;
+const tslib_1 = require("tslib");
+const repository_1 = require("@loopback/repository");
+const usuarios_model_1 = require("./usuarios.model");
+let Ponencias = class Ponencias extends repository_1.Entity {
+    constructor(data) {
+        super(data);
+    }
+};
+exports.Ponencias = Ponencias;
+tslib_1.__decorate([
+    (0, repository_1.property)({
+        type: 'string',
+        id: true,
+        generated: true,
+    }),
+    tslib_1.__metadata("design:type", String)
+], Ponencias.prototype, "id", void 0);
+tslib_1.__decorate([
+    (0, repository_1.property)({
+        type: 'any',
+    }),
+    tslib_1.__metadata("design:type", Object)
+], Ponencias.prototype, "ponencia", void 0);
+tslib_1.__decorate([
+    (0, repository_1.belongsTo)(() => usuarios_model_1.Usuarios, { name: 'resenaFk' }),
+    tslib_1.__metadata("design:type", String)
+], Ponencias.prototype, "resena", void 0);
+tslib_1.__decorate([
+    (0, repository_1.property)({
+        type: 'string',
+        required: true,
+    }),
+    tslib_1.__metadata("design:type", String)
+], Ponencias.prototype, "fecha", void 0);
+exports.Ponencias = Ponencias = tslib_1.__decorate([
+    (0, repository_1.model)(),
+    tslib_1.__metadata("design:paramtypes", [Object])
+], Ponencias);
+//# sourceMappingURL=ponencias.model.js.map

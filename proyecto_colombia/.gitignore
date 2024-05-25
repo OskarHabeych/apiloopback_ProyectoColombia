@@ -58,7 +58,7 @@ typings/
 .env
 
 # Transpiled JavaScript files from Typescript
-/dist
+
 
 # Cache used by TypeScript's incremental build
 *.tsbuildinfo
@@ -66,4 +66,4 @@ typings/
 # Emacs auto-save file
 \#*#
 
-src/datasources/mongo.datasource.ts
+
