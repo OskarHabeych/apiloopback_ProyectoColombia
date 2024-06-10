@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './components/navbar/navbar.tsx';
+import Navbar from './components/navbar.tsx';
 import Hero from './components/hero/hero.tsx';
-import SingIn from './components/singin/singin.tsx';
-import Footer from './components/footer/footer.tsx';
+import SingIn from './components/singin.tsx';
+import Footer from './components/footer.tsx';
 
 import './css/tailwind.css';
 
