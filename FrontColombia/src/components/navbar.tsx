@@ -1,6 +1,6 @@
 import React from 'react';
 
-class navbar extends React.Component {
+class Navbar extends React.Component {
   render() {
     return (
       <React.Fragment>
