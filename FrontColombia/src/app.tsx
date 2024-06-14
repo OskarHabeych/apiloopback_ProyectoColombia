@@ -7,6 +7,7 @@ import Footer from './components/footer.tsx';
 import './css/tailwind.css';
 
 function App() {
+<<<<<<< HEAD
   return (  
     <>
     <Navbar/>
@@ -14,6 +15,15 @@ function App() {
     <SingIn/>
     <Footer/>
        </>
+=======
+  return (
+   <>
+   <Navbar/>
+   <Hero/>
+   <SingIn/>
+   <Footer/>
+      </>
+>>>>>>> e6e466335ad047648d3aafa42f2e6d3cf8f34959
   );
 }
 
