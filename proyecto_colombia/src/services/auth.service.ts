@@ -7,7 +7,7 @@ import {UsuariosRepository} from '../repositories';
 const jwt = require('jsonwebtoken');
 
 
-// Nuevas librerias
+// Nuevas librerias: paquetes relacionados a registros de usuarios,  generación de contraseñas aleatorias y encriptación de las mismas
 const generator = require("password-generator");
 const cryptoJS = require("crypto-js");
 
