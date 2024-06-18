@@ -1,7 +1,7 @@
 import { Entity } from '@loopback/repository';
 export declare class Aportes extends Entity {
     id?: string;
-    comentario?: string;
+    comantario: string;
     constructor(data?: Partial<Aportes>);
 }
 export interface AportesRelations {
