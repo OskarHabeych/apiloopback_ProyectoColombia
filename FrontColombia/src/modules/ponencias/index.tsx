@@ -1,70 +1,115 @@
-/*const { useState, createContext, useContext } = React;
-
-const MyContext = createContext();
-
-
-const MyProvider = ({ children }) => {
-    const [proyecto, setProyecto] = useState({ resena: '', ponencia: '', fecha: '' });
-
-    return (
-        <MyContext.Provider value={{ proyecto, setProyecto }}>
-            {children}
-        </MyContext.Provider>
-    );
-};
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 
-const App = () => {
-    return (
-        <MyProvider>
-            <Profile />
-        </MyProvider>
-    );
-}
-
-const Profile = () => {
-    const { proyecto, setProyecto } = useContext(MyContext);
-    const [newresena, setNewResena] = useState('');
-    const [newponencia, setNewPonencia] = useState('');
-    const [newfecha, setNewFecha] = useState('');
-
-    const handleResenaChange = (event) => {
-        setNewResena(event.target.value);
+const Ponencias = () => {
+    const { register, handleSubmit } = useForm()
+    const navigate = useNavigate()
+  
+    const onSubmit = async ( userInfo ) => {
+      console.log(userInfo)
+      // navigate('/')
     }
+    /*return (<>
+        <main className='sign-up-wrapper'>
+          <img className='sign-up-wrapper__image' src={travel} alt='luggage, books and glasses picture in a orange backgrpund' />
+          <form 
+            className='sign-up'
+            onSubmit={handleSubmit(onSubmit)}
+        >
+            <h2 className='sign-up__title'>Login</h2>
+            <div className='input-wrapper'>
+              <label
+                className='sign-up__label'
+                htmlFor='input-email'
 
-    const handlePonenciaChange = (event) => {
-        setNewPonencia(event.target.value);
-    }
+                Descripción General Problemática :
+              </label>
+              <input
+                className='sign-up__input'
+                type='email'
+                placeholder='Enter your email'
+                id='input-email'
+                name='email'
+                { ...register('email') }
+            />
+          </div>
+          <div className='input-wrapper'>
+            <label
+              className='sign-up__label'
+              htmlFor='input-password'
+            >
+              Password
+            </label>
+            <input
+              className='sign-up__input'
+              type='password'
+              placeholder='Enter your password'
+              id='input-password'
+              name='password'
+              { ...register('password') }
+            />
+          </div>
+          <button className='sign-up__form-button'>Login</button>
+        </form>
+      </main>*/
+      /*<main  className='sign-up-wrapper sign-desktop'>
+        <img 
+          className='sign-up-wrapper__image-desktop' 
+          src={travel} 
+          alt='luggage, books and glasses picture in a orange backgrpund' 
+        />
+        <form 
+          className='sign-up-desktop'
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h2 className='sign-up__title'>Login</h2>
+          <div className='input-wrapper'>
+            <label
+              className='sign-up__label'
+              htmlFor='input-email-desk'
+            >
+              Descripción General Problemática :
+            </label>
+            <input
+              className='sign-up__input'
+              type='resena'
+              placeholder=''
+              id='input-email-desk'
+              name='resena'
+              { ...register('resena') }
+            />
+          </div>
+          <div className='input-wrapper'>
+            <label
+              className='sign-up__label'
+              htmlFor='input-password-desk'
+            >
+              Ampliación de la Problemática:
+            </label>
+            <input
+              className='sign-up__input'
+              type='password'
+              placeholder='Enter your password'
+              id='input-password-desk'
+              name='password'
+              { ...register('ponencia') }
+            />
+          </div>
+          <button className='sign-up__form-button'>Suministrar Información</button>
+        </form>
+      </main>
+    </>)
+  }
 
-    const handleFechaChange = (event) => {
-        setNewFecha(event.target.value);
-    }
-
-    const handleResenaUpdate = () => {
-        setProyecto({ ...proyecto, name: newresena });
-
-    const handlePonenciaUpdate = () => {
-        setProyecto({ ...proyecto, name: newponencia });
-    }
-
-    const handleFechaUpdate = () => {
-        setProyecto({ ...proyecto, name: newfecha });
-
-    return (
-        <div>
-            <h2>Profile</h2>
-            <p>Presentación de la Problemática : {proyecto.resena}</p>
-            <p>Ponencia (descripción detallada - solución al problema) : {proyecto.ponencia}</p>
-            <p>Fecha actual : {proyecto.fecha}</p>
-            <div>
-                <b>Presentación de la Problemática :</b>
-                <div>
-                    <input id="modify-user-name" type="text" value={newresena} onChange={handleResenaChange} />
-                    <input id="modify-user-name" type="text" value={newponencia} onChange={handlePonenciaChange} />
-                    <input id="modify-user-name" type="text" value={newfecha} onChange={handleFechaChange} />
-                    <button id="update-user" className="mt-2 btn btn-success d-flex justify-content-center align-items-center" style={{ height: '6vh' }} onClick={handleNameUpdate}>cambiar</button>
-                </div>
-            </div>
-        </div>
-    );
-};*/
+    {Descripción General Problemática :}
+    <input type="text" placeholder="Type here" className="input input-bordered input-sm w-full max-w-xs" />
+    
+    {Ampliación de la Problemática :}
+    <input type="text" placeholder="Type here" className="input input-bordered input-md
+    
+    {Fecha actual :}
+    <input type="text" placeholder="Type here" className="input input-bordered input-xs w-full max-w-xs" />
+  
+  
+  export default SignIn*/
