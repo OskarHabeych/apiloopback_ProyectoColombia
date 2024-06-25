@@ -1,0 +1,194 @@
+IA:
+Navbar.tsx:
+
+Define las rutas generales (Home, SingIn, SingUp) y las integra 
+en el menú desplegable. Usa NavLink para manejar la navegación 
+y la clase active para los enlaces activos.
+
+App.tsx:
+
+Configura las rutas principales y renderiza el Navbar.
+Login.tsx:
+
+Usa useState para alternar entre las vistas de SignIn y SignUp.
+Incluye un botón para alternar entre estas vistas, mostrando la
+vista adecuada según el estado. Descripcion del componente Navbar:
+El cual import de general_pages: Home, Login. Este componente 
+permite acceder a dichas vistas usando NavLink, el componente 
+Navbar debe iterar sobre general_pages tantas veces como sea 
+determinado necesario, se suguiere tener en cuenta la logica usada
+en la vista general Login usar como referencia el siguiente codigo del proyecto react-vite
+
+Navbar.js:                                 
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+
+class Navbar extends Component {
+  handleClick = () => this.props.onClick(this.props.index)
+
+  render() {
+    return (
+        <Link to={`/${this.props.name}`}>
+          <li
+            className={this.props.isActive ? 'active' : ''}
+            onClick={this.handleClick}>
+            {this.props.name}
+          </li>
+        </Link>
+    );
+  }
+}
+
+export default Navbar;
+######
+cat App.js:                              
+import React from 'react';
+import Header from './Components/Header.js';
+import Main from './Components/Main.js';
+
+const App = () => {
+  return (
+    <div>
+    <Header />
+    <Main />
+    </div>
+  );
+}
+
+export default App;
+
+esta logica de navegacion en el navbar debe ser replicada en el siguiente 
+codigo:
+index.tsx:             
+import React from 'react';
+
+const Navbar = () => (
+   <div className="navbar bg-base-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+          </div>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a>Homepage</a></li>
+            <li><a>Portfolio</a></li>
+            <li><a>Sobre nosotros</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="navbar-center">
+        <a className="btn btn-ghost text-xl">daisyUI</a>
+      </div>
+      <div className="navbar-end">
+        <button className="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        </button>
+        <button className="btn btn-ghost btn-circle">
+          <div className="indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+            <span className="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+);
+export default Navbar;
+#####
+app.tsx:                         
+import React from 'react';
+import useState from 'react';
+import Navbar from './components/navbar/index';
+import Hero from './components/hero/index';
+import Footer from './components/footer/index';
+import SignIn from './components/singin/index';
+import SingUp from './components/singup/index';
+import Login from './general_pages/sing/index.tsx';
+import './css/tailwind.css';
+
+function App() {
+  return (  
+    <>
+    <Login/>
+    <Footer/>
+     </>
+
+  );
+}
+
+export default App;
+
+la parte especifica en donde se aplique esta
+logica de navegacio es en la tag 
+con el className="menu menu-sm dropdown", por el momento solo integra singin y singup
+<div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+          </div>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a>Homepage</a></li>
+            <li><a>Portfolio</a></li>
+            <li><a>Sobre nosotros</a></li>
+          </ul>
+        </div>
+      </div>
+Para la generacion del codigo es menester tomar en consideracion 
+el funcionamiento de Login el cual se encuentra en general_pages
+
+./src/general_pages/sing/index.tsx:              
+import React, { useState } from 'react'; // Importa useState correctamente
+import SignIn from '../../components/singin/index.tsx';
+import SignUp from '../../components/singup/index.tsx';
+import Navbar from '../../components/navbar/index.tsx';
+
+const Login = () => {
+  const [isLoginView, setIsLoginView] = useState(true);
+
+  const toggleView = () => {
+    setIsLoginView(!isLoginView);
+  };
+
+  const ToggleButton = () => (
+    <p>
+      {isLoginView ? (
+        <>
+          Don't have an account?{' '}
+          <button
+            className="text-blue-500 hover:underline"
+            onClick={toggleView}
+          >
+            Sign Up
+          </button>
+        </>
+      ) : (
+        <>
+          Already have an account?{' '}
+          <button
+            className="text-blue-500 hover:underline"
+            onClick={toggleView}
+          >
+            Sign In
+          </button>
+        </>
+      )}
+    </p>
+  );
+
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto p-4">
+        <div className="flex justify-center">
+          <div className="w-full max-w-md">
+            {isLoginView ? <SignIn /> : <SignUp />}
+            <div className="text-center mt-4">
+              <ToggleButton />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Login;
+
