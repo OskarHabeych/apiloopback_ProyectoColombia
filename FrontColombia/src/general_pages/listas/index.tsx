@@ -1,16 +1,34 @@
+import React, { Component } from 'react';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
-/*const getPonencia = () => {
-    const { register, handleSubmit } = useForm()
-    const navigate = useNavigate()
-  
-    const onSubmit = async ( userInfo ) => {
-      console.log(userInfo)
+class Listas extends Component{
+  constructor(){
+    super();
+    this.state = {
+      gettinUsers: []
+      }
+   }
+
+componentWillMount(){
+    this.getUsuarios();
+  }
+
+  getUsuarios(){
+    axios.get('http://localhost:3355/explorer/#/UsuariosController/UsuariosController.find')
+      .then(response => {
+        this.setState({gettinUsers: response.data}, () => {
+          //console.log(this.state);
+        })
+      })
     }
-    return (<>
-        <div class="container">
+
+    render(){
+      const listItems = this.state.singin.map((gettinUser, i) => {...
+        return (
+          <div className="container">
             <br>
             <a routerLink="/encomienda/create" class="btn">Registrar Problemática</a>
         
@@ -38,6 +56,5 @@ import { useNavigate } from 'react-router-dom'
               </tbody>
             </table>
         </div>
-    </>
     )
 }*/

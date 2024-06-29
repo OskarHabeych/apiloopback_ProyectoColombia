@@ -1,5 +1,28 @@
-import React from 'react';
+import React, { Component }from 'react';
+import axios from 'axios';
 
+const SignIn = () => (
+  /*(1)class SingIn extends Component{
+    constructor(){
+      super();
+      this.state = {
+        singin: []
+      }
+    }*/
+
+    /*(3)componentWillMount(){
+      this.getUsuarios();
+    }*/
+
+  /*(2)loginUsuarios(){
+    axios.get('http://localhost:3355/explorer/#/UsuariosController/UsuariosController.login')
+      .then(response => {
+        this.setState({singin: response.data}, () => {
+        {
+          //console.log(this.state);
+        });
+      })
+    }*/
 const SignIn = () => (
   <div className="w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg">
     <h1 className="text-3xl font-semibold text-center text-gray-700">
