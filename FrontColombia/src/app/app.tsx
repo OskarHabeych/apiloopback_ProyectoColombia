@@ -11,9 +11,7 @@ import '../css/tailwind.css';
 function App() {
   return (
    <> 
-<Navbar/>
-<Hero/>
-<Carousel/>
+<Login/>
 </>
 );
 }

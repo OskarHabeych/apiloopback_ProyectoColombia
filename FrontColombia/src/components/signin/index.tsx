@@ -1,12 +1,12 @@
 import React, { Component }from 'react';
 import axios from 'axios';
 
-const SignIn = () => (
-  /*(1)class SingIn extends Component{
-    constructor(){
-      super();
+/*** const SignIn = () => (
+  (1)class SingIn extends Component{
+    super();
       this.state = {
         singin: []
+    constructor(){
       }
     }*/
 
