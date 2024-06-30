@@ -1,7 +1,6 @@
 import React, { useState } from 'react'; // Importa useState correctamente
 import SignIn from '../../components/singin/index.tsx';
 import SignUp from '../../components/singup/index.tsx';
-import Navbar from '../../components/navbar/index.tsx';
 
 const Login = () => {
   const [isLoginView, setIsLoginView] = useState(true);
@@ -38,8 +37,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4">
         <div className="flex justify-center">
           <div className="w-full max-w-md">
             {isLoginView ? <SignIn /> : <SignUp />}
