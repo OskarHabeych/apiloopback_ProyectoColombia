@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // Importa useState correctamente
-import SignIn from '../../components/singin/index.tsx';
-import SignUp from '../../components/singup/index.tsx';
+import SignIn from '../../components/signin/index.tsx';
+import SignUp from '../../components/signup/index.tsx';
 
 const Login = () => {
   const [isLoginView, setIsLoginView] = useState(true);
