@@ -26,13 +26,13 @@ componentWillMount(){
     }
 
     render(){
-      const listItems = this.state.singin.map((gettinUser, i) => {...
+      //const listItems = this.state.gettinUsers.map((gettinUser, i) => {...
         return (
           <div className="container">
             <br>
             <a routerLink="/encomienda/create" class="btn">Registrar Problemática</a>
         
-            <table class="table responsive">
+            <table className="table responsive">
               <thead>
                   <tr>
                       <th>alias</th> //otra modelo "persona"
@@ -43,11 +43,11 @@ componentWillMount(){
               </thead>
         
               <tbody>
-                <tr *ngFor="let p of listado">
-                  <td>{{p.alias}}</td>
-                  <td>{{p.resena}}</td>
-                  <td>{{p.ponencia}}</td>
-                  <td>{{p.fecha}}</td>
+                <tr *ngFor="let gettinUser of gettinUsers">
+                  <td>{{gettinUser.alias}}</td>
+                  <td>{{gettinUser.resena}}</td>
+                  <td>{{gettinUser.ponencia}}</td>
+                  <td>{{gettinUser.fecha}}</td>
                   <td>
                     <a routerLink="/encomienda/edit/{{p.id}}" class="btn">Editar</a>
                     <button class="btn red" (click)="delete(p.id)">Eliminar</button>
