@@ -11,11 +11,25 @@ class listasItems extends Component{
 
   render(){
     return (
-      <li className="collection-item">
+     <table class="table responsive">
+              <thead>
+                  <tr>
+                      <th>RESEÑA</th>
+                      <th>PONENCIA</th>
+                      <th>FECHA</th>
+                  </tr>
+              </thead>
+      <tbody>
+      <td>
         <Link to={`/indexListas/${this.state.item.id}`}>{this.state.item.resena}</Link>
-      </li>
+      </td>
+        <Link to={this.state.item.nombre}</Link>
+      </td>
+       <td>
+        <Link to={this.state.item.apellidos}</Link>
+      </td>
     )
   }
 }
 
-export default MeetupItem;*/
+export default listasItems;*/
