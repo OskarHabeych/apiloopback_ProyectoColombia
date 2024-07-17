@@ -1,7 +1,8 @@
 import React, { useState } from 'react'; // Importa useState correctamente
 import SignIn from '../../components/signin/index.tsx';
 import SignUp from '../../components/signup/index.tsx';
-
+import Navbar from '../../components/navbar/index.tsx'
+import Footer from '../../components/footer/index.tsx';
 const Login = () => {
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -37,6 +38,7 @@ const Login = () => {
 
   return (
     <>
+    <Navbar/>
     <div className="container mx-auto p-4">
         <div className="flex justify-center">
           <div className="w-full max-w-md">
@@ -47,6 +49,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+     <Footer/>
     </>
   );
 };

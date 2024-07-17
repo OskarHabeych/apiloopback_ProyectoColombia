@@ -1,3 +1,9 @@
+El codigo pertenece a index.tsx el cual es un componente 
+para crear un usuario se esta usando tegnologias como
+react, tsx, tailwind con daisyui. Quiero cambiar la 
+posicion de campo phone number, deseo que se ubique debajo de Your email.
+
+
 import React, { useState } from 'react';
 
 const SignUp = () => {
@@ -91,28 +97,6 @@ const SignUp = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone-number" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Phone Number
-                </label>
-                <div className="flex">
-                  <select id="country-code" className="w-20 text-gray-900 text-sm rounded-lg bg-gray-50 border border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="+91" selected>IN</option>
-                    <option value="+1">US</option>
-                    <option value="+44">UK</option>
-                  </select>
-                  <input
-                    type="tel"
-                    name="phone-number"
-                    id="phone-number"
-                    placeholder="123 456 7890"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   Password
                 </label>
@@ -141,6 +125,28 @@ const SignUp = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+              </div>
+              <div>
+                <label htmlFor="phone-number" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Phone Number
+                </label>
+                <div className="flex">
+                  <select id="country-code" className="w-20 text-gray-900 text-sm rounded-lg bg-gray-50 border border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="+91" selected>IN</option>
+                    <option value="+1">US</option>
+                    <option value="+44">UK</option>
+                  </select>
+                  <input
+                    type="tel"
+                    name="phone-number"
+                    id="phone-number"
+                    placeholder="123 456 7890"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                </div>
               </div>
               <div className="flex items-start">
                 <div className="flex items-center h-5">
@@ -184,4 +190,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp;%

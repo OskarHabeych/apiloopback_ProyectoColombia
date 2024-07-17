@@ -63,6 +63,7 @@
     "loopback-connector-mysql": "^7.0.9",
     "parse-bearer-token": "^1.0.1",
     "password-generator": "^2.3.2",
+    "sqlite": "^5.1.1",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

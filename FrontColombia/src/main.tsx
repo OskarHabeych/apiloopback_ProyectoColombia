@@ -5,7 +5,7 @@ import './css/tailwind.css'; // Asegúrate de que Tailwind CSS esté importado a
 
 ReactDOM.render(
   <React.StrictMode>
-   <App />
-  </React.StrictMode>,
+      <App />
+   </React.StrictMode>,
   document.getElementById('root')
 );

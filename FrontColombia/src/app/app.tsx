@@ -10,9 +10,10 @@ import '../css/tailwind.css';
 
 function App() {
   return (
-    <Router>
+    
+    <Router>      
       <Routes>
-          <Route element={<Layout />} />
+        <Route element={<Layout />} />
           <Route index element={<Home />} />
           <Route path="/Login" element={<Login />} />
           </Routes>
