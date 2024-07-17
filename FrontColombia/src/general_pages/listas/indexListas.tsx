@@ -18,7 +18,7 @@ componentWillMount(){
   }
 
   getListaPonencia(){
-    axios.get('http://localhost:3355/explorer/#/UsuariosController/PonenciasController')
+    axios.get('http://localhost:3355/ponencias/{id}/usuarios/')
       .then(response => {
         this.setState({ponecias: response.data}, () => {
           console.log(this.state);
@@ -36,10 +36,13 @@ componentWillMount(){
     return (
       <div>
       <h1>Listas Ponencias</h1>
-      <ul className="collection">
-        {ponenciasItems}
-      </ul>
+      <tbody>
+        <tr className="collection">
+          {ponenciasItems}
+        </tr>
+      </tbody>
     </div>
   )
 }
-}*/
+}
+export default indexListas;*/
