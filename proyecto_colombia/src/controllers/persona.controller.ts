@@ -28,6 +28,7 @@ export class PersonaController {
     public personaRepository: PersonaRepository,
   ) { }
 
+  @authenticate.skip()
   @post('/personas')
   @response(200, {
     description: 'Persona model instance',
@@ -107,7 +108,7 @@ export class PersonaController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(Persona, {exclude: 'where'}) filter?: FilterExcludingWhere<Persona>
   ): Promise<Persona> {
     return this.personaRepository.findById(id, filter);
@@ -118,7 +119,7 @@ export class PersonaController {
     description: 'Persona PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -136,7 +137,7 @@ export class PersonaController {
     description: 'Persona PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() persona: Persona,
   ): Promise<void> {
     await this.personaRepository.replaceById(id, persona);
@@ -146,7 +147,7 @@ export class PersonaController {
   @response(204, {
     description: 'Persona DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.personaRepository.deleteById(id);
   }
 }

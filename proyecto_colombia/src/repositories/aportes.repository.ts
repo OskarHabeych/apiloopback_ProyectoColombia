@@ -1,6 +1,6 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
-import {MongoDataSource} from '../datasources';
+import {Getter, inject} from '@loopback/core';
+import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
+import {MysqlDataSource} from '../datasources';
 import {Aportes, AportesRelations, Persona} from '../models';
 import {PersonaRepository} from './persona.repository';
 
@@ -13,7 +13,7 @@ export class AportesRepository extends DefaultCrudRepository<
   public readonly comentarioFk: BelongsToAccessor<Persona, typeof Aportes.prototype.id>;
 
   constructor(
-    @inject('datasources.Mongo') dataSource: MongoDataSource, @repository.getter('PersonaRepository') protected personaRepositoryGetter: Getter<PersonaRepository>,
+    @inject('datasources.mysql') dataSource: MysqlDataSource, @repository.getter('PersonaRepository') protected personaRepositoryGetter: Getter<PersonaRepository>,
   ) {
     super(Aportes, dataSource);
     this.comentarioFk = this.createBelongsToAccessorFor('comentarioFk', personaRepositoryGetter,);

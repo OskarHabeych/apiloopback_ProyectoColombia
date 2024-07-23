@@ -1,6 +1,6 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
-import {MongoDataSource} from '../datasources';
+import {Getter, inject} from '@loopback/core';
+import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
+import {MysqlDataSource} from '../datasources';
 import {Persona, PersonaRelations, Usuarios} from '../models';
 import {UsuariosRepository} from './usuarios.repository';
 
@@ -13,7 +13,7 @@ export class PersonaRepository extends DefaultCrudRepository<
   public readonly aliasFk: BelongsToAccessor<Usuarios, typeof Persona.prototype.id>;
 
   constructor(
-    @inject('datasources.Mongo') dataSource: MongoDataSource, @repository.getter('UsuariosRepository') protected usuariosRepositoryGetter: Getter<UsuariosRepository>,
+    @inject('datasources.mysql') dataSource: MysqlDataSource, @repository.getter('UsuariosRepository') protected usuariosRepositoryGetter: Getter<UsuariosRepository>,
   ) {
     super(Persona, dataSource);
     this.aliasFk = this.createBelongsToAccessorFor('aliasFk', usuariosRepositoryGetter,);

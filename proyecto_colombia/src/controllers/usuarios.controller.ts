@@ -37,7 +37,7 @@ export class UsuariosController {
     public servicioAuth: AuthService
 
   ) { }
-  
+
   @authenticate.skip() //Instrucción que habilita que este método del servicio web del controlador usuarios no deba tener permisos de autenticación
   @post('/usuarios')
   @response(200, {
@@ -141,6 +141,7 @@ export class UsuariosController {
     return this.usuariosRepository.updateAll(usuarios, where);
   }
 
+  @authenticate.skip()
   @get('/usuarios/{id}')
   @response(200, {
     description: 'Usuarios model instance',
@@ -151,7 +152,7 @@ export class UsuariosController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(Usuarios, {exclude: 'where'}) filter?: FilterExcludingWhere<Usuarios>
   ): Promise<Usuarios> {
     return this.usuariosRepository.findById(id, filter);
@@ -162,7 +163,7 @@ export class UsuariosController {
     description: 'Usuarios PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -180,7 +181,7 @@ export class UsuariosController {
     description: 'Usuarios PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() usuarios: Usuarios,
   ): Promise<void> {
     await this.usuariosRepository.replaceById(id, usuarios);
@@ -190,7 +191,7 @@ export class UsuariosController {
   @response(204, {
     description: 'Usuarios DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.usuariosRepository.deleteById(id);
   }
 

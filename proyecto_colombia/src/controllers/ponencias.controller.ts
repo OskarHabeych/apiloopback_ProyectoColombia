@@ -21,13 +21,14 @@ import {
 import {Ponencias} from '../models';
 import {PonenciasRepository} from '../repositories';
 
-@authenticate("admin")     
+@authenticate("admin")
 export class PonenciasController {
   constructor(
     @repository(PonenciasRepository)
     public ponenciasRepository: PonenciasRepository,
   ) { }
 
+  @authenticate.skip()
   @post('/ponencias')
   @response(200, {
     description: 'Ponencias model instance',
@@ -107,7 +108,7 @@ export class PonenciasController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(Ponencias, {exclude: 'where'}) filter?: FilterExcludingWhere<Ponencias>
   ): Promise<Ponencias> {
     return this.ponenciasRepository.findById(id, filter);
@@ -118,7 +119,7 @@ export class PonenciasController {
     description: 'Ponencias PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -136,7 +137,7 @@ export class PonenciasController {
     description: 'Ponencias PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() ponencias: Ponencias,
   ): Promise<void> {
     await this.ponenciasRepository.replaceById(id, ponencias);
@@ -146,7 +147,7 @@ export class PonenciasController {
   @response(204, {
     description: 'Ponencias DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.ponenciasRepository.deleteById(id);
   }
 }

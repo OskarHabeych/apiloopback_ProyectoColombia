@@ -107,7 +107,7 @@ export class AportesController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(Aportes, {exclude: 'where'}) filter?: FilterExcludingWhere<Aportes>
   ): Promise<Aportes> {
     return this.aportesRepository.findById(id, filter);
@@ -118,7 +118,7 @@ export class AportesController {
     description: 'Aportes PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -136,7 +136,7 @@ export class AportesController {
     description: 'Aportes PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() aportes: Aportes,
   ): Promise<void> {
     await this.aportesRepository.replaceById(id, aportes);
@@ -146,7 +146,7 @@ export class AportesController {
   @response(204, {
     description: 'Aportes DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.aportesRepository.deleteById(id);
   }
 }

@@ -1,19 +1,34 @@
-import {Entity, model, property} from '@loopback/repository';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
+import {Usuarios} from './usuarios.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_persona_id_usuarios: {
+        name:'fk_persona_id_usuarios',
+        entity:'usuarios',
+        entityKey:'id',
+        foreignKey:'id_usuarios',
+      }
+    }
+  }
+})
 export class Persona extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: true,
   })
-  id?: string;
+  id?: number;
 
   @property({
     type: 'string',
     required: true,
   })
   alias: string;
+
+  @belongsTo(() => Usuarios, {name: 'aliasFk'})
+  id_usuarios: number;
 
   @property({
     type: 'string',

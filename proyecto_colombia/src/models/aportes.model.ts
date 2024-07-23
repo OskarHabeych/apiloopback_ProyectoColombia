@@ -1,18 +1,34 @@
 import {Entity, belongsTo, model, property} from '@loopback/repository';
 import {Persona} from './persona.model';
 
-
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_aportes_id_persona: {
+        name:'fk_aportes_id_persona',
+        entity:'persona',
+        entityKey:'id',
+        foreignKey:'id_persona',
+      }
+    }
+  }
+})
 export class Aportes extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: true,
   })
-  id?: string;
+  id?: number;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  comentario: string;
 
   @belongsTo(() => Persona, {name: 'comentarioFk'})
-  comantario: string;
+  id_persona: string;
 
   constructor(data?: Partial<Aportes>) {
     super(data);
