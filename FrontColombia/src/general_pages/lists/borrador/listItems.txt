@@ -1,0 +1,37 @@
+requiero que este componente sea funcional agregando los estilos 
+de tailwind estoy usando tsx
+/*import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
+class listasItems extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      item:props.item
+    }
+  }
+
+  render(){
+    return (
+     <table class="table responsive">
+              <thead>
+                  <tr>
+                      <th>RESEÑA</th>
+                      <th>PONENCIA</th>
+                      <th>FECHA</th>
+                  </tr>
+              </thead>
+      <tbody>
+      <td>
+        <Link to={`/indexListas/${this.state.item.id}`}>{this.state.item.resena}</Link>
+      </td>
+        <Link to={this.state.item.nombre}</Link>
+      </td>
+       <td>
+        <Link to={this.state.item.apellidos}</Link>
+      </td>
+    )
+  }
+}
+
+export default listasItems;*/

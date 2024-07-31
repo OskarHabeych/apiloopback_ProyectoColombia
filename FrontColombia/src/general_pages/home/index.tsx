@@ -5,13 +5,15 @@ import Hero from '../../components/hero/index.tsx';
 import Carousel from '../../components/carousel/index.tsx';
 import Navbar from '../../components/navbar/index.tsx';
 import Footer from '../../components/footer/index.tsx';
+import IndexList from '../lists/index.tsx';
 const Home = () => {
   return (
   <>
     <Navbar/>
     <Hero/>
-    <Carousel/>
+    <IndexList/>
     <Footer/>
+    
        </>
    )
   }
