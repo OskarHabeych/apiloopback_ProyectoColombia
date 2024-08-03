@@ -1,6 +1,6 @@
 import {Getter, inject} from '@loopback/core';
 import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
-import {MysqlDataSource} from '../datasources';
+import {SqliteDsDataSource} from '../datasources';
 import {Ponencias, PonenciasRelations, Usuarios} from '../models';
 import {UsuariosRepository} from './usuarios.repository';
 
@@ -13,7 +13,7 @@ export class PonenciasRepository extends DefaultCrudRepository<
   public readonly resenaFk: BelongsToAccessor<Usuarios, typeof Ponencias.prototype.id>;
 
   constructor(
-    @inject('datasources.mysql') dataSource: MysqlDataSource, @repository.getter('UsuariosRepository') protected usuariosRepositoryGetter: Getter<UsuariosRepository>,
+    @inject('datasources.sqliteDS') dataSource: SqliteDsDataSource, @repository.getter('UsuariosRepository') protected usuariosRepositoryGetter: Getter<UsuariosRepository>,
   ) {
     super(Ponencias, dataSource);
     this.resenaFk = this.createBelongsToAccessorFor('resenaFk', usuariosRepositoryGetter,);
