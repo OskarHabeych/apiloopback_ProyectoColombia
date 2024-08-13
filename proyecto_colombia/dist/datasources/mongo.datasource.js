@@ -7,7 +7,7 @@ const repository_1 = require("@loopback/repository");
 const config = {
     name: 'Mongo',
     connector: 'mongodb',
-    url: 'mongodb+srv://oivansandino:feviEd5uuF8kYvbh@peakus.tzvacdg.mongodb.net/',
+    url: 'mongodb+srv://oivansandino3:GA5SAtOtgQ1E5Fqh@peakus.tzvacdg.mongodb.net/',
     host: '',
     port: 0,
     user: '',
