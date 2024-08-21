@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from '../components/navbar/index.tsx'; 
-import Home from '../general_pages/home/index.tsx';
-import Login from '../general_pages/sign/index.tsx'; 
+import { AuthProvider } from '../AuthContext'; // Asegúrate de que esta ruta sea correcta
+import Home from '../general_pages/home/index';
+import Login from '../general_pages/sign/index';
 import SignIn from '../components/signin/index'; 
 import SignUp from '../components/signup/index'; 
-import Layout from '../general_pages/layout/index.tsx';
-import '../css/tailwind.css'; 
+import Layout from '../general_pages/layout/index';
+import '../css/tailwind.css';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    
-    <Router>      
-      <Routes>
-        <Route element={<Layout />} />
-          <Route index element={<Home />} />
-          <Route path="/Login" element={<Login />} />
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route element={<Layout darkMode={darkMode} setDarkMode={setDarkMode} />}>
+              <Route index element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+            </Route>
           </Routes>
-       </Router>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

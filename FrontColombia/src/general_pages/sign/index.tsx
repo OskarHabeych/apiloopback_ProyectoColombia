@@ -1,8 +1,8 @@
-import React, { useState } from 'react'; // Importa useState correctamente
+import React, { useState } from 'react';
 import SignIn from '../../components/signin/index.tsx';
 import SignUp from '../../components/signup/index.tsx';
-import Navbar from '../../components/navbar/index.tsx'
-import Footer from '../../components/footer/index.tsx';
+import endpoints from '../../endpoint/index.tsx';
+
 const Login = () => {
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -11,7 +11,7 @@ const Login = () => {
   };
 
   const ToggleButton = () => (
-    <p>
+    <p className="mt-4 text-center">
       {isLoginView ? (
         <>
           Don't have an account?{' '}
@@ -37,22 +37,15 @@ const Login = () => {
   );
 
   return (
-    <>
-    <Navbar/>
     <div className="container mx-auto p-4">
-        <div className="flex justify-center">
-          <div className="w-full max-w-md">
-            {isLoginView ? <SignIn /> : <SignUp />}
-            <div className="text-center mt-4">
-              <ToggleButton />
-            </div>
-          </div>
+      <div className="flex justify-center">
+        <div className="w-full max-w-md">
+          {isLoginView ? <SignIn /> : <SignUp />}
+          <ToggleButton />
         </div>
       </div>
-     <Footer/>
-    </>
+    </div>
   );
 };
 
 export default Login;
-

@@ -9,10 +9,10 @@ import IndexList from '../lists/index.tsx';
 const Home = () => {
   return (
   <>
-    <Navbar/>
+    
     <Hero/>
     <IndexList/>
-    <Footer/>
+    
     
        </>
    )

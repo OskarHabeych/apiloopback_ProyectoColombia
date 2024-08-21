@@ -1,14 +1,22 @@
-import React from 'react'; 
-import Navbar from '../../components/navbar/index.tsx'; 
-import Footer from '../../components/footer/index.tsx'; 
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../../components/navbar/index';
+import Footer from '../../components/footer/index';
 
-const Layout = () => {
+interface LayoutProps {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Layout: React.FC<LayoutProps> = ({ darkMode, setDarkMode }) => {
   return (
-    <main>
-      <Navbar />
-      <Outlet />
+    <div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Elimina o comenta estas líneas:
+:root {
+  @apply light;
+}
+*/
+
+/* En su lugar, usa esto para definir estilos por defecto: */
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+/* Define los estilos para el modo oscuro */
+.dark {
+  @apply bg-gray-800 text-white;
+}
