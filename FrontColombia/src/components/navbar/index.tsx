@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
           <div className="flex items-center mr-4">
             <div className="avatar">
               <div className="w-8 rounded-full">
-                <img src="/images/user-icon.png" alt="User" />
+                <img src="../../../public/loggoSvg/userlogo.svg" />
               </div>
             </div>
             <span className="ml-2 text-sm font-medium">{user?.name}</span>
